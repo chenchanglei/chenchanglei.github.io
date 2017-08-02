@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://chenchanglei.github.io/"/>
-  <updated>2017-08-02T08:29:12.000Z</updated>
+  <updated>2017-08-02T09:26:07.000Z</updated>
   <id>http://chenchanglei.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python tab补全功能</title>
+    <link href="http://chenchanglei.github.io/2017/08/02/python-tab%E8%A1%A5%E5%85%A8%E5%8A%9F%E8%83%BD/"/>
+    <id>http://chenchanglei.github.io/2017/08/02/python-tab补全功能/</id>
+    <published>2017-08-02T09:21:22.000Z</published>
+    <updated>2017-08-02T09:26:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#1.确认第三方安装包路径<br>import sys6<br>sys.path<br>2.在路径下建立tab.py文件<br>/Library/Python/2.7/site-packages/tab$ cat tab.py</p>
+<p>import readline,rlcompleter</p>
+<h3 id="Indenting"><a href="#Indenting" class="headerlink" title="Indenting"></a>Indenting</h3><p>class TabCompleter(rlcompleter.Completer):<br>“””Completer that supports indenting”””<br>    def complete(self, text, state):<br>      if not text:<br>        return (‘’, None)[state]<br>      else:<br>        return rlcompleter.Completer.complete(self, text, state)<br>readline.set_completer(TabCompleter().complete)</p>
+<p>###Add autocompletion<br>if ‘libedit’ in readline.<strong>doc</strong>:<br>readline.parse_and_bind(“bind -e”)<br>readline.parse_and_bind(“bind ‘’ rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p>
+<h3 id="Add-history"><a href="#Add-history" class="headerlink" title="Add history"></a>Add history</h3><p>import os<br>histfile = os.path.join(os.environ[“HOME”], “.pyhist”)<br>try:<br>readline.read_history_file(histfile)<br>except IOError:<br>pass<br>import atexit<br>atexit.register(readline.write_history_file, histfile)<br>del histfile</p>
+<p>3.启动python自动导入tab</p>
+<p>新建文件.pystartup.py并填入内容<br>cat ~/.pystartup.py</p>
+<p>import sys<br>import readline<br>import rlcompleter</p>
+<p>if sys.platform == ‘darwin’ and sys.version_info[0] == 2:<br>readline.parse_and_bind(“bind ^I rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p>
+<p>4.设置环境变量.bash_profile<br>cat ~/.bash_profile<br>export PYTHONSTARTUP=$HOME/.pystartup.py</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#1.确认第三方安装包路径&lt;br&gt;import sys6&lt;br&gt;sys.path&lt;br&gt;2.在路径下建立tab.py文件&lt;br&gt;/Library/Python/2.7/site-packages/tab$ cat tab.py&lt;/p&gt;
+&lt;p&gt;import readline,
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://chenchanglei.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>test</title>

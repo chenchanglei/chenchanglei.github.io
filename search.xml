@@ -3,6 +3,30 @@
   
     
     <entry>
+      <title><![CDATA[python tab补全功能]]></title>
+      <url>/2017/08/02/python-tab%E8%A1%A5%E5%85%A8%E5%8A%9F%E8%83%BD/</url>
+      <content type="html"><![CDATA[<p>#1.确认第三方安装包路径<br>import sys6<br>sys.path<br>2.在路径下建立tab.py文件<br>/Library/Python/2.7/site-packages/tab$ cat tab.py</p>
+<p>import readline,rlcompleter</p>
+<h3 id="Indenting"><a href="#Indenting" class="headerlink" title="Indenting"></a>Indenting</h3><p>class TabCompleter(rlcompleter.Completer):<br>“””Completer that supports indenting”””<br>    def complete(self, text, state):<br>      if not text:<br>        return (‘’, None)[state]<br>      else:<br>        return rlcompleter.Completer.complete(self, text, state)<br>readline.set_completer(TabCompleter().complete)</p>
+<p>###Add autocompletion<br>if ‘libedit’ in readline.<strong>doc</strong>:<br>readline.parse_and_bind(“bind -e”)<br>readline.parse_and_bind(“bind ‘’ rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p>
+<h3 id="Add-history"><a href="#Add-history" class="headerlink" title="Add history"></a>Add history</h3><p>import os<br>histfile = os.path.join(os.environ[“HOME”], “.pyhist”)<br>try:<br>readline.read_history_file(histfile)<br>except IOError:<br>pass<br>import atexit<br>atexit.register(readline.write_history_file, histfile)<br>del histfile</p>
+<p>3.启动python自动导入tab</p>
+<p>新建文件.pystartup.py并填入内容<br>cat ~/.pystartup.py</p>
+<p>import sys<br>import readline<br>import rlcompleter</p>
+<p>if sys.platform == ‘darwin’ and sys.version_info[0] == 2:<br>readline.parse_and_bind(“bind ^I rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p>
+<p>4.设置环境变量.bash_profile<br>cat ~/.bash_profile<br>export PYTHONSTARTUP=$HOME/.pystartup.py</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[test]]></title>
       <url>/2017/08/02/test/</url>
       <content type="html"><![CDATA[<p>#welcome to my blog!<br><img src="http://upload-images.jianshu.io/upload_images/1798456-89ce1718d1a5ee06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a href="http://www.jianshu.com/p/148e26058916" target="_blank" rel="external">http://www.jianshu.com/p/148e26058916</a></p>
