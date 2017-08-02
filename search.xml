@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title><![CDATA[pip自动生成requirements.txt依赖关系清单]]></title>
+      <url>/2017/08/02/pip%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90requirements-txt%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E6%B8%85%E5%8D%95/</url>
+      <content type="html"><![CDATA[<p>Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。</p>
+<pre><code>$pip freeze &gt; requirements.txt
+</code></pre><p>这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[python tab补全功能]]></title>
       <url>/2017/08/02/python-tab%E8%A1%A5%E5%85%A8%E5%8A%9F%E8%83%BD/</url>
       <content type="html"><![CDATA[<p>#1.确认第三方安装包路径<br>    import sys6<br>    sys.path<br>2.在路径下建立tab.py文件</p>
