@@ -87,27 +87,6 @@ im
   </entry>
   
   <entry>
-    <title>test</title>
-    <link href="http://chenchanglei.github.io/2017/08/02/test/"/>
-    <id>http://chenchanglei.github.io/2017/08/02/test/</id>
-    <published>2017-08-02T07:55:55.000Z</published>
-    <updated>2017-08-02T08:29:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#welcome to my blog!<br><img src="http://upload-images.jianshu.io/upload_images/1798456-89ce1718d1a5ee06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a href="http://www.jianshu.com/p/148e26058916" target="_blank" rel="external">http://www.jianshu.com/p/148e26058916</a></p>
-<p><a href="http://www.jianshu.com/p/148e26058916" target="_blank" rel="external">MacDown的使用规范总结</a></p>
-<p><a href="http://www.jianshu.com/p/e99ed60390a8" target="_blank" rel="external">20分钟教你使用hexo搭建github博客</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#welcome to my blog!&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1798456-89ce1718d1a5ee06.png?imageMogr2/auto-orient/strip
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://chenchanglei.github.io/2017/08/02/hello-world/"/>
     <id>http://chenchanglei.github.io/2017/08/02/hello-world/</id>
