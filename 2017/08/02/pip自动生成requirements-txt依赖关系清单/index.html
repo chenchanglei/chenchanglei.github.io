@@ -1,10 +1,322 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> pip自动生成requirements.txt依赖关系清单 · MiraClei Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="pip自动生成requirements.txt依赖关系清单 - Chen Changlei"><meta name="keywords"><meta name="author" content="Chen Changlei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://chenchanglei.github.io/atom.xml" title="MiraClei Blog"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/categories/live/" target="_self" data-hover="生活" class="nav-list-link">生活</a></li><li class="nav-list-item"><a href="/categories/film/" target="_self" data-hover="摄影" class="nav-list-link">摄影</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">pip自动生成requirements.txt依赖关系清单</h1><div class="post-info">2017-08-02<p class="visit"><i data-hk-page="current">-</i><span>次访问</span></p></div><div class="post-content"><p>Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="pip自动生成requirements.txt依赖关系清单"/>
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MiraClei Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://chenchanglei.github.io/2017/08/02/pip自动生成requirements-txt依赖关系清单/"/>
+
+
+<meta name="description" content="Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。 $pip freeze &amp;gt; requirements.txt 这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库 pip install -r requirements.txt">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pip自动生成requirements.txt依赖关系清单">
+<meta property="og:url" content="http://chenchanglei.github.io/2017/08/02/pip自动生成requirements-txt依赖关系清单/index.html">
+<meta property="og:site_name" content="MiraClei Blog">
+<meta property="og:description" content="Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。 $pip freeze &amp;gt; requirements.txt 这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库 pip install -r requirements.txt">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-02T09:41:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pip自动生成requirements.txt依赖关系清单">
+<meta name="twitter:description" content="Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。 $pip freeze &amp;gt; requirements.txt 这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库 pip install -r requirements.txt">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> pip自动生成requirements.txt依赖关系清单 · MiraClei Blog </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">MiraClei Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">MiraClei Blog</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          pip自动生成requirements.txt依赖关系清单
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年8月2日
+        </span>
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        <p>Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。</p>
 <pre><code>$pip freeze &gt; requirements.txt
 </code></pre><p>这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库</p>
 <pre><code>pip install -r requirements.txt
-</code></pre></div></article></div><div class="right-container"><div class="widget"><div class="category"><h4>分类归档</h4></div></div><div class="widget"><div class="tagcloud"><h4>标签云</h4><a href="/tags/Python/" style="font-size: 10px;">Python</a></div></div><div class="widget"><div class="recent"><h4>最近文章</h4><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/pip自动生成requirements-txt依赖关系清单/">pip自动生成requirements.txt依赖关系清单</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/python-tab补全功能/">python tab补全功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/02/hello-world/">Hello World</a></li></ul></div></div><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2017/08/02/python-tab补全功能/" class="next">NEXT</a></div><!--PC和WAP自适应版--><div id="SOHUCS" sid="2017/08/02/pip自动生成requirements-txt依赖关系清单/"> </div><script>(function() {
-    var appid = 'cyt6h19Ve'; 
-    var conf = 'prod_0b4b95efa2ecfede2ddfb5adcef8c394'; 
-    var width = window.innerWidth || document.documentElement.clientWidth; 
-    if (width < 960) { 
-    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();</script><div class="copyright"><p>© 2016 - 2017 <a target="_blank">Chen Changlei</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p>闽ICP备16007301号-2</p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script><script src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js"></script><script src="/scripts/hit-kounter-lc-0.2.0.js"></script><script src="/scripts/arAnchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+</code></pre>
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/08/02/python-tab补全功能/">
+        <span class="next-text nav-default">python tab补全功能</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Chen Changlei</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>
