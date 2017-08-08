@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://chenchanglei.github.io/"/>
-  <updated>2017-08-02T09:41:06.000Z</updated>
+  <updated>2017-08-08T02:35:08.000Z</updated>
   <id>http://chenchanglei.github.io/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://chenchanglei.github.io/2017/08/07/AWS%20ECS%20%E5%88%9B%E5%BB%BA/"/>
+    <id>http://chenchanglei.github.io/2017/08/07/AWS ECS 创建/</id>
+    <published>2017-08-07T07:44:54.000Z</published>
+    <updated>2017-08-08T02:35:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>集群：default</p>
+<p>任务定义：console-sample-app-static</p>
+<p>实例：</p>
+<pre><code>CloudFormation：arn:aws:cloudformation:ap-southeast-1:324635282012:stack/EC2ContainerService-default/e2352080-7b42-11e7-98cb-500c336f5a8e
+Internet网关：igw-d63cd5b2
+VPC：vpc-3e603b5a
+路由表：rtb-26a35d41
+连接VPC的网关：EC2Co-Attac-GOTZICU96GRH
+子网1：subnet-02adbe74
+子网2：subnet-5bbc523c
+公有路由：EC2Co-Publi-17A6CDKRF0ZF
+子网1关联：rtbassoc-1865297f
+ECS安全组：sg-67c83901
+子网2关联：rtbassoc-f4662a93
+Auto Scaling:EC2ContainerService-default-EcsInstanceAsg-1OK6B2GAUUZ6S
+启动配置：EC2ContainerService-default-EcsInstanceLc-1P6F654Q2SBT3
+</code></pre><p>服务：sample-webapp</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;集群：default&lt;/p&gt;
+&lt;p&gt;任务定义：console-sample-app-static&lt;/p&gt;
+&lt;p&gt;实例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CloudFormation：arn:aws:cloudformation:ap-southeast-1:324635282
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>pip自动生成requirements.txt依赖关系清单</title>
