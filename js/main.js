@@ -1,132 +1,105 @@
-$(function () {
+if (!!$.prototype.justifiedGallery) { // if justifiedGallery method is defined
+    var options = {
+        rowHeight: 140,
+        margins: 4,
+        lastRow: 'justify'
+    };
+    $('.article-gallery').justifiedGallery(options);
+}
 
-	$('.post__main img').on('click', function () {
-		var $img = $(this);
 
-		$.fancybox.open([{
-			src: $img.attr('src'),
-			type: 'image'
-		}]);
-	});
+$(window).load(function() {
+    
+       $("#wrapper").fadeTo("slow",1);
+       $("#blogtitel").fadeOut(2000);
+});
 
-	$('[data-fancybox]').fancybox({
-		// closeClickOutside: false, 
-		image: {
-			protect: true
-		}
-	});
+$(document).ready(function() {
 
-	// key bind
 
-	// j  down
-	// k  top
-	// t  page top
-	// b  page bottom
+    $(window).on('scroll', function() {
 
-	// i  go index
-	var $body = $('html');
+        var z = $(".banner")[0].getBoundingClientRect().bottom / (
+            $(".banner")[0].getBoundingClientRect().bottom - $(".banner")[0].getBoundingClientRect().top)
 
-	var isKeydown = false;
-	$body.on('keydown', function (e) {
-		// console.log(e.which, 'key down');
+        if (z < 0) {
+            z = 0.01
+        }
 
-		switch (e.which) {
-			case 74: // j down
-				if (!isKeydown) {
-					isKeydown = true;
-					requestAnimationFrame(function animate() {
-						var curTop = window.scrollY;
-						window.scrollTo(0, curTop + 15);
+        $(".wrapper")[0].style.zoom = z
+        $(".wrapper")[0].style.MozTransform = "scale(" + z + ")"
 
-						if (isKeydown) {
-							requestAnimationFrame(animate);
-						}
-					});
-				}
+    });
 
-				break;
+    $("#menu-icon, #menu-icon-tablet").click(function() {
+        if ($('#menu').css('visibility') == 'hidden') {
+            $('#menu').css('visibility', 'visible');
+            $('#menu-icon, #menu-icon-tablet').addClass('active');
 
-			case 75: // k up
-				if (!isKeydown) {
-					isKeydown = true;
-					requestAnimationFrame(function animate() {
-						var curTop = window.scrollY;
-						window.scrollTo(0, curTop - 15);
+            var topDistance = $("#menu > #nav").offset().top;
 
-						if (isKeydown) {
-							requestAnimationFrame(animate);
-						}
-					});
-				}
+            $("#menu > #nav").show();
+            return false;
+        } else {
+            $('#menu').css('visibility', 'hidden');
+            $('#menu-icon, #menu-icon-tablet').removeClass('active');
 
-				break;
+            return false;
+        }
+    });
 
-			case 191: // shift + / = ? show help modal
-				break;
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    $("#header > #nav > ul > .icon").click(function() {
+        $("#header > #nav > ul").toggleClass("responsive");
+    });
 
-				// 16 shift
-			case 84: // t
-				window.scrollToTop(1);
-				break;
+    if ($("#menu").length) {
+        $(window).on('scroll', function() {
+            var topDistance = $(window).scrollTop();
 
-			case 66: // b
-				window.scrollToBottom();
-				break;
+            if ($('#menu').css('visibility') != 'hidden' && topDistance < 10) {
+                $("#menu > #nav").show();
+            } else if ($('#menu').css('visibility') != 'hidden' && topDistance > 10) {
+                $("#menu > #nav").hide();
+            }
 
-			case 78: // n half
-				window.scrollPageDown(1);
-				break;
+            if (!$("#menu-icon").is(":visible") && topDistance < 10) {
 
-			case 77: // m
-				window.scrollPageUp(1);
-				break;
-		}
+                $("#menu-icon-tablet").show();
+                $("#top-icon-tablet").hide();
+            } else if (!$("#menu-icon").is(":visible") && topDistance > 10) {
 
-	});
+                $("#menu-icon-tablet").hide();
+                $("#top-icon-tablet").show();
+            }
+        });
+    }
 
-	$body.on('keyup', function (e) {
-		isKeydown = false;
-	});
+    if ($("#footer-post").length) {
+        var lastScrollTop = 0;
+        $(window).on('scroll', function() {
+            var topDistance = $(window).scrollTop();
 
-	// print hint
+            if (topDistance > lastScrollTop) {
+                // downscroll code
+                $("#footer-post").hide();
+            } else {
+                // upscroll code
+                $("#footer-post").show();
+            }
+            lastScrollTop = topDistance;
 
-	var comments = [
-		'',
-		'                    .::::.            快捷键：',
-		'                  .::::::::.            j：下移',
-		'                 :::::::::::            k：上移',
-		"             ..:::::::::::'             t：移到最顶",
-		"           '::::::::::::'               b：移到最底",
-		'             .::::::::::                n：下移很多',
-		"        '::::::::::::::..               m：上移很多",
-		'             ..::::::::::::.',
-		'           ``::::::::::::::::',
-		"            ::::``:::::::::'        .:::.",
-		"           ::::'   ':::::'       .::::::::.",
-		"         .::::'      ::::     .:::::::'::::.",
-		"        .:::'       :::::  .::::::::'  ':::::.",
-		"       .::'        :::::::::::::::'      ':::::.",
-		"      .::'        :::::::::::::::'          ':::.",
-		"  ...:::          :::::::::::::'              ``::.",
-		" ```` ':.         '::::::::::'                  ::::..",
-		"                    ':::::'                    ':'````..",
-		''
-	];
+            $("#nav-footer").hide();
+            $("#toc-footer").hide();
+            $("#share-footer").hide();
 
-	comments.forEach(function (item) {
-		console.log('%c' + item, 'color: #399c9c');
-	});
-
-	$('.btn-reward').on('click', function (e) {
-		e.preventDefault();
-
-		var $reward = $('.reward-wrapper');
-		$reward.slideToggle();
-	});
-
-	$('body').addClass('queue-in');
-	setTimeout(function() {
-		$('body').css({ opacity: 1}).removeClass('queue-in');
-	}, 500);
-
+            if (topDistance < 50) {
+                $("#actions-footer > ul > #top").hide();
+                $("#actions-footer > ul > #menu").show();
+            } else if (topDistance > 100) {
+                $("#actions-footer > ul > #menu").hide();
+                $("#actions-footer > ul > #top").show();
+            }
+        });
+    }
 });
