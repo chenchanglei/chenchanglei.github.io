@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MiraClei Blog</title>
+  
   <subtitle>知识改变命运</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -22,31 +23,17 @@
     <published>2017-08-07T07:44:54.000Z</published>
     <updated>2017-08-08T02:35:08.000Z</updated>
     
-    <content type="html"><![CDATA[<p>集群：default</p>
-<p>任务定义：console-sample-app-static</p>
-<p>实例：</p>
-<pre><code>CloudFormation：arn:aws:cloudformation:ap-southeast-1:324635282012:stack/EC2ContainerService-default/e2352080-7b42-11e7-98cb-500c336f5a8e
-Internet网关：igw-d63cd5b2
-VPC：vpc-3e603b5a
-路由表：rtb-26a35d41
-连接VPC的网关：EC2Co-Attac-GOTZICU96GRH
-子网1：subnet-02adbe74
-子网2：subnet-5bbc523c
-公有路由：EC2Co-Publi-17A6CDKRF0ZF
-子网1关联：rtbassoc-1865297f
-ECS安全组：sg-67c83901
-子网2关联：rtbassoc-f4662a93
-Auto Scaling:EC2ContainerService-default-EcsInstanceAsg-1OK6B2GAUUZ6S
-启动配置：EC2ContainerService-default-EcsInstanceLc-1P6F654Q2SBT3
-</code></pre><p>服务：sample-webapp</p>
-]]></content>
+    <content type="html"><![CDATA[<p>集群：default</p><p>任务定义：console-sample-app-static</p><p>实例：</p><pre><code>CloudFormation：arn:aws:cloudformation:ap-southeast-1:324635282012:stack/EC2ContainerService-default/e2352080-7b42-11e7-98cb-500c336f5a8eInternet网关：igw-d63cd5b2VPC：vpc-3e603b5a路由表：rtb-26a35d41连接VPC的网关：EC2Co-Attac-GOTZICU96GRH子网1：subnet-02adbe74子网2：subnet-5bbc523c公有路由：EC2Co-Publi-17A6CDKRF0ZF子网1关联：rtbassoc-1865297fECS安全组：sg-67c83901子网2关联：rtbassoc-f4662a93Auto Scaling:EC2ContainerService-default-EcsInstanceAsg-1OK6B2GAUUZ6S启动配置：EC2ContainerService-default-EcsInstanceLc-1P6F654Q2SBT3</code></pre><p>服务：sample-webapp</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;集群：default&lt;/p&gt;
+      
+      
+        &lt;p&gt;集群：default&lt;/p&gt;
 &lt;p&gt;任务定义：console-sample-app-static&lt;/p&gt;
 &lt;p&gt;实例：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;CloudFormation：arn:aws:cloudformation:ap-southeast-1:324635282
+      
     
     </summary>
     
@@ -60,17 +47,16 @@ Auto Scaling:EC2ContainerService-default-EcsInstanceAsg-1OK6B2GAUUZ6S
     <published>2017-08-02T09:36:08.000Z</published>
     <updated>2017-08-02T09:41:06.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。</p>
-<pre><code>$pip freeze &gt; requirements.txt
-</code></pre><p>这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库</p>
-<pre><code>pip install -r requirements.txt
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。</p><pre><code>$pip freeze &gt; requirements.txt</code></pre><p>这里面写的是运行这个项目所需要的环境，包括一些库，运行之前需要使用如下命令安装这些库</p><pre><code>pip install -r requirements.txt</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。&lt;/p&gt;
+      
+      
+        &lt;p&gt;Python项目中经常会带requirements.txt文件，里面是项目所依赖的包的列表，也就是依赖关系清单，这个清单也可以使用pip命令自动生成。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$pip freeze &amp;gt; requirements.txt
 &lt;/code&gt;&lt;/pre
+      
     
     </summary>
     
@@ -86,36 +72,17 @@ Auto Scaling:EC2ContainerService-default-EcsInstanceAsg-1OK6B2GAUUZ6S
     <published>2017-08-02T09:21:22.000Z</published>
     <updated>2017-08-02T09:31:56.000Z</updated>
     
-    <content type="html"><![CDATA[<p>#1.确认第三方安装包路径<br>    import sys6<br>    sys.path<br>2.在路径下建立tab.py文件</p>
-<pre><code>/Library/Python/2.7/site-packages/tab$ cat tab.py
-
-import readline,rlcompleter
-</code></pre><p>class TabCompleter(rlcompleter.Completer):<br>“””Completer that supports indenting”””<br>    def complete(self, text, state):<br>      if not text:<br>        return (‘’, None)[state]<br>      else:<br>        return rlcompleter.Completer.complete(self, text, state)<br>readline.set_completer(TabCompleter().complete)</p>
-<p>if ‘libedit’ in readline.<strong>doc</strong>:<br>readline.parse_and_bind(“bind -e”)<br>readline.parse_and_bind(“bind ‘’ rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p>
-<p>import os<br>histfile = os.path.join(os.environ[“HOME”], “.pyhist”)<br>try:<br>readline.read_history_file(histfile)<br>except IOError:<br>pass<br>import atexit<br>atexit.register(readline.write_history_file, histfile)<br>del histfile</p>
-<p>3.启动python自动导入tab</p>
-<p>新建文件.pystartup.py并填入内容</p>
-<pre><code>cat ~/.pystartup.py
-</code></pre><p>  内容：</p>
-<pre><code>import sys
-import readline
-import rlcompleter
-
-if sys.platform == &apos;darwin&apos; and sys.version_info[0] == 2:  
-readline.parse_and_bind(&quot;bind ^I rl_complete&quot;)
-else:   
-readline.parse_and_bind(&quot;tab: complete&quot;)
-</code></pre><p>4.设置环境变量.bash_profile</p>
-<pre><code>$cat ~/.bash_profile
-$export PYTHONSTARTUP=$HOME/.pystartup.py
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>#1.确认第三方安装包路径<br>    import sys6<br>    sys.path<br>2.在路径下建立tab.py文件</p><pre><code>/Library/Python/2.7/site-packages/tab$ cat tab.pyimport readline,rlcompleter</code></pre><p>class TabCompleter(rlcompleter.Completer):<br>“””Completer that supports indenting”””<br>    def complete(self, text, state):<br>      if not text:<br>        return (‘’, None)[state]<br>      else:<br>        return rlcompleter.Completer.complete(self, text, state)<br>readline.set_completer(TabCompleter().complete)</p><p>if ‘libedit’ in readline.<strong>doc</strong>:<br>readline.parse_and_bind(“bind -e”)<br>readline.parse_and_bind(“bind ‘’ rl_complete”)<br>else:<br>readline.parse_and_bind(“tab: complete”)</p><p>import os<br>histfile = os.path.join(os.environ[“HOME”], “.pyhist”)<br>try:<br>readline.read_history_file(histfile)<br>except IOError:<br>pass<br>import atexit<br>atexit.register(readline.write_history_file, histfile)<br>del histfile</p><p>3.启动python自动导入tab</p><p>新建文件.pystartup.py并填入内容</p><pre><code>cat ~/.pystartup.py</code></pre><p>  内容：</p><pre><code>import sysimport readlineimport rlcompleterif sys.platform == &apos;darwin&apos; and sys.version_info[0] == 2:  readline.parse_and_bind(&quot;bind ^I rl_complete&quot;)else:   readline.parse_and_bind(&quot;tab: complete&quot;)</code></pre><p>4.设置环境变量.bash_profile</p><pre><code>$cat ~/.bash_profile$export PYTHONSTARTUP=$HOME/.pystartup.py</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#1.确认第三方安装包路径&lt;br&gt;    import sys6&lt;br&gt;    sys.path&lt;br&gt;2.在路径下建立tab.py文件&lt;/p&gt;
+      
+      
+        &lt;p&gt;#1.确认第三方安装包路径&lt;br&gt;    import sys6&lt;br&gt;    sys.path&lt;br&gt;2.在路径下建立tab.py文件&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;/Library/Python/2.7/site-packages/tab$ cat tab.py
 
 im
+      
     
     </summary>
     
@@ -131,20 +98,14 @@ im
     <published>2017-08-02T07:49:36.000Z</published>
     <updated>2017-08-02T07:49:36.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
     
     </summary>
     
